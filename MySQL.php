@@ -1,15 +1,21 @@
 <?php
+    class MySQL extends SQL{
+    use SQLCrud;
+    private $host;
+    private $post;
+    private $username;
+    private $password;
+    private $database;
+    
 
-include "IQuery.php";
-include "PDOConnector.php";
-include "SQLQuery.php";
-include "SQL.php";
-include "SQLCrud.php";
-include "MySQL.php";
-include "PostgreSQL.php";
+    public function __construct($host, $username, $password, $database){
 
-$db = new MySQL("localhost", "root", "toor", "database");
+    $this -> host = $host;        
+    $this -> username = $username; 
+    $this -> password = $password; 
+    $this -> database = $database; 
+}
+    public function __destruct(){
 
-$query = (new SQLQuery())->setTable("users")->select()->addWhere("username", "=", ":user")->addBinding("user", "eray");
-
-$eray = $db->first($query);
+    }
+}
